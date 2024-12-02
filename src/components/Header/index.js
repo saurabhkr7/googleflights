@@ -1,6 +1,6 @@
 import React from "react";
 import { AppBar, Toolbar, IconButton, Button, Box } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import SideNav from "../SideNav";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AppsIcon from "@mui/icons-material/Apps";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
@@ -10,20 +10,13 @@ const Header = () => {
   return (
     <AppBar position="static" color="default">
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <MenuButton />
+        <SideNav />
         <NavigationButtons />
         <UserActions />
       </Toolbar>
     </AppBar>
   );
 };
-
-// Menu Button Component
-const MenuButton = () => (
-  <IconButton edge="start" color="inherit" aria-label="menu">
-    <MenuIcon />
-  </IconButton>
-);
 
 // Navigation Buttons Component
 const NavigationButtons = () => (
