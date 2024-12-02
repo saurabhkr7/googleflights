@@ -18,13 +18,44 @@ export const FlightProvider = ({ children }) => {
 
   const validateInputs = () => {
     const newErrors = {};
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset time to only compare dates
+  
+    // Check for missing fields
     if (!from) newErrors.from = "Please select a departure city.";
     if (!to) newErrors.to = "Please select a destination city.";
     if (!departureDate) newErrors.departureDate = "Please select a departure date.";
-    if (tripType === "Round Trip" && !returnDate) newErrors.returnDate = "Please select a return date.";
+    if (tripType === "Round Trip" && !returnDate) {
+      newErrors.returnDate = "Please select a return date.";
+    }
+  
+    // Additional validations
+    if (from && to && from === to) {
+      newErrors.to = "Departure and destination cities cannot be the same.";
+    }
+    if (departureDate) {
+      const depDate = new Date(departureDate);
+      if (depDate < today) {
+        newErrors.departureDate = "Departure date cannot be in the past.";
+      }
+    }
+    if (tripType === "Round Trip" && departureDate && returnDate) {
+      const depDate = new Date(departureDate);
+      const retDate = new Date(returnDate);
+  
+      if (retDate < depDate) {
+        newErrors.returnDate = "Return date cannot be before the departure date.";
+      }
+      if (retDate < today) {
+        newErrors.returnDate = "Return date cannot be in the past.";
+      }
+    }
+  
+    console.log(newErrors);
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  
 
   const handleSearch = () => {
     if (validateInputs()) {
@@ -60,6 +91,7 @@ export const FlightProvider = ({ children }) => {
         setReturnDate,
         errors,
         handleSearch,
+        validateInputs
       }}
     >
       {children}
