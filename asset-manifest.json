@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/googleflights/static/css/main.cc927886.css",
+    "main.js": "/googleflights/static/js/main.c48771c3.js",
+    "static/js/453.a00bfc1e.chunk.js": "/googleflights/static/js/453.a00bfc1e.chunk.js",
+    "index.html": "/googleflights/index.html",
+    "main.cc927886.css.map": "/googleflights/static/css/main.cc927886.css.map",
+    "main.c48771c3.js.map": "/googleflights/static/js/main.c48771c3.js.map",
+    "453.a00bfc1e.chunk.js.map": "/googleflights/static/js/453.a00bfc1e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc927886.css",
+    "static/js/main.c48771c3.js"
+  ]
+}
